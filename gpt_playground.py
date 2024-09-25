@@ -5,19 +5,18 @@ from pdb import set_trace
 from key import gpt_api_key
 
 
-client = OpenAI()
-completion = client.chat.completions.create()
+openai.api_key = gpt_api_key
 
 
 
 def generate_text(prompt):
-    response = openai.completions.create(
+    response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
-        prompt=prompt,
+        messages=[{"role": "user", "content": prompt}],
         max_tokens=10,
         temperature=0.7
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message.content.strip()
 
 prompt = "Once upon a time"
 

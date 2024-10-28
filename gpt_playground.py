@@ -9,8 +9,8 @@ openai.api_key = gpt_api_key
 
 def generate_text(prompt, max_tokens, temperature):
     response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
+        model="gpt-3.5-turbo",                                  ### chooses which model to use
+        messages=[{"role": "user", "content": prompt}],         ###
         max_tokens=max_tokens,                                  ### sets the limits for the number of tokens to be returned
         temperature=temperature                                 ### sets the complexity of the returned response
     )
